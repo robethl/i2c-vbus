@@ -6,7 +6,7 @@
 *-------------------------------------------------------------------------------
 * Author        Date        Modification  Version  Description
 **============================================================================*/
-
+#include <stdio.h>
 #include <string.h>
 #include "type.h"
 #include "list_queue.h"
@@ -114,8 +114,8 @@ VOID VbusPolling(VbNotify_fp fNotify, UI08 sumOfVbCb, VbCb_t *pVbCbList)PARAM_PA
 	for(i = 0; i < sumOfVbCb; ++i){
 		BOOL Readable;
 		
-		if(VbusGetStatus(&Readable, i)){
-			static BOOL slave = VbusIsSlvMode(i);
+		if(VbusGetStatus(i, &Readable)){
+			BOOL slave = VbusIsSlvMode(i);
 			if(Readable){
 				VbusRecvLpdu(i, &pVbCbList[i].recvQ, fNotify);
 				if(slave) VbusSendLpdu(i, slave, &pVbCbList[i].sendQ);

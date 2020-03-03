@@ -6,6 +6,7 @@
 *-------------------------------------------------------------------------------
 * Author        Date        Modification  Version  Description
 **============================================================================*/
+#include <stdio.h>
 #include "type.h"
 #include "list_queue.h"
 
